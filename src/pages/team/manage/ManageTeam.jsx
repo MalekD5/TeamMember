@@ -1,25 +1,24 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { NotFound } from "../../../components";
-import { useLocalStorage } from "../../../hooks/LocalStorageHook";
+import { getTeam } from "../../../utils/DataUtils";
 
-const Load = ({ id }) => {
-  const [value, setValue] = useLocalStorage(`team.${id}`, {});
-
+const Load = ({ team }) => {
   return (
     <div>
       <h1 className="mt-4 text-center">Team Manage</h1>
+      {team.name}
     </div>
   );
 };
 
 const ManageTeam = () => {
   const { id } = useParams();
+  const team = getTeam(id);
 
-  if (isNaN(id) || localStorage.getItem(`team.${id}`) == null)
-    return <NotFound />;
+  if (!team) return <NotFound />;
 
-  return <Load id={id} />;
+  return <Load team={team} />;
 };
 
 export default ManageTeam;

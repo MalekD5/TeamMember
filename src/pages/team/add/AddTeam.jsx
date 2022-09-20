@@ -3,8 +3,11 @@ import { useState } from "react";
 import { Alert, Button, Form } from "react-bootstrap";
 import teamSchema from "../../../constants/Validation";
 import { getStorageValue } from "../../../hooks/LocalStorageHook";
+import { createTeam, getTeam } from "../../../utils/DataUtils";
+import { useNavigate } from "react-router-dom";
 
 const AddTeam = () => {
+  const navigate = useNavigate();
   const [exists, setExists] = useState(false);
 
   const handleSubmit = (event) => {
@@ -12,14 +15,16 @@ const AddTeam = () => {
     const form = event.currentTarget;
     if (!form.checkValidity()) return;
 
-    const teams = getStorageValue("teams", [{ name: "a" }]);
-    console.log(teams);
-    if (teams.findIndex((e) => e.name === form["name"].value) !== -1) {
+    const name = form.name.value;
+    const teams = getStorageValue("teams", []);
+    if (getTeam(name)) {
       setExists(true);
-      console.log("exists");
       return;
     }
+
+    createTeam(form, teams);
     setExists(false);
+    navigate(`/teams/${name}`);
   };
 
   return (
