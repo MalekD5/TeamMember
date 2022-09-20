@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import { Button, Card, Form, InputGroup, Stack } from "react-bootstrap";
+import { Button, Form, Stack } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { TeamCard } from "../../../components";
 import { useLocalStorage } from "../../../hooks/LocalStorageHook";
@@ -9,6 +10,12 @@ const TeamView = () => {
   const [search, setSearch] = useState("");
   const [teams, setTeams] = useLocalStorage("teams", []);
   const nav = useNavigate();
+  const resetbtn = document.getElementById("reset-btn");
+
+  const resetSearch = () => {
+    setSearch("");
+    resetbtn.value = "";
+  };
 
   const editTeam = (name) => {
     nav(`/teams/${name}`);
@@ -31,9 +38,12 @@ const TeamView = () => {
         <Stack className="mt-2 mb-4" direction="horizontal" gap={3}>
           <Form.Control
             onChange={(e) => setSearch(e.target.value.toLowerCase())}
+            id="reset-btn"
             placeholder="Search for team..."
           />
-          <Button variant="danger">Reset</Button>
+          <Button onClick={resetSearch} variant="danger">
+            Reset
+          </Button>
           <div className="vr" />
           <Button onClick={() => nav("/teams/add")} variant="outline-primary">
             Create
