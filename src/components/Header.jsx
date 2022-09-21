@@ -8,6 +8,7 @@ const Header = () => {
         <Navbar.Brand href="/">Team Member</Navbar.Brand>
         <Nav className="me-auto">
           <Nav.Link href="/">Home</Nav.Link>
+          <Nav.Link href="/employees">Employees</Nav.Link>
           <Nav.Link href="/teams">Teams</Nav.Link>
         </Nav>
       </Container>

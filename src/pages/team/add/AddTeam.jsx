@@ -1,7 +1,7 @@
 import { Formik } from "formik";
 import { useState } from "react";
 import { Alert, Button, Form } from "react-bootstrap";
-import teamSchema from "../../../constants/Validation";
+import { teamSchema } from "../../../constants/Validation";
 import { getStorageValue } from "../../../hooks/LocalStorageHook";
 import { createTeam, getTeam } from "../../../utils/DataUtils";
 import { useNavigate } from "react-router-dom";

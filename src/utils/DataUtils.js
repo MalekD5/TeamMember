@@ -26,3 +26,5 @@ export function deleteTeam(name) {
   teams.splice(index, 1);
   return teams;
 }
+
+export function createEmployee(form, employees) {}
