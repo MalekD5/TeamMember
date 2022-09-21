@@ -1,13 +1,12 @@
 import React from "react";
-import { Button, Container, Form, InputGroup } from "react-bootstrap";
+import { Button, Form, InputGroup } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { EmployeeCard, NotFound } from "../../../components";
+import { NotFound } from "../../../components";
 import { getTeam } from "../../../utils/DataUtils";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { Formik } from "formik";
 import { teamSchema } from "../../../constants/Validation";
-import { Employees } from "../../../constants/EmployeeData";
 
 const Load = ({ team }) => {
   const handleSubmit = (event) => {
