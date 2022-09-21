@@ -77,21 +77,6 @@ const Load = ({ team }) => {
           )}
         </Formik>
       </div>
-
-      <h2 className="mt-4 text-center pb-4">Team Members</h2>
-
-      <Container
-        fluid="sm"
-        className="w-50 justify-content-center align-items-center"
-      >
-        <Row md={3}>
-          {Employees.map((e) => (
-            <Col key={e.name} md={3}>
-              <EmployeeCard e={e} setContent={() => {}} />
-            </Col>
-          ))}
-        </Row>
-      </Container>
     </div>
   );
 };
